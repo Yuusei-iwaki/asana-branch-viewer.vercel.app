@@ -57,6 +57,20 @@ export const GITHUB_BASE_URL = "https://api.github.com";
 /** 環境変数からGitHubのオーナー名を取得（必要に応じて使用） */
 export const GITHUB_OWNER = process.env.GITHUB_OWNER || "";
 
+/** 管理対象のGitHubリポジトリ一覧 */
+export const GITHUB_REPO_NAMES = [
+    "capo_java_mkamaki_front", // 真木フロント
+    "capo_java_mkamaki_backend", // 真木バック
+    "horo-scope_front", // ホロスコフロント
+    "horo-scope_backend", // ホロスコバック
+    "capo_java_suisho_front", // 水晶フロント
+    "capo_java_suisho_front", // 水晶バック
+    "capo_java_mimiko_front", // みみこフロント
+    "capo_java_mimiko_backend", // みみこバック
+    "capo_java_hosiyomi_front", // ほしよみフロント
+    "capo_java_hosiyomi_backend", // ほしよみバック
+];
+
 /** GitHub APIエンドポイント */
 export const GITHUB_ENDPOINTS = {
     /** 🔹 リポジトリ関連 */
