@@ -17,6 +17,7 @@ export const ASANA_ENDPOINTS = {
     PROJECTS: {
         /** ワークスペース内のプロジェクト一覧取得 */
         LIST: `${ASANA_BASE_URL}/workspaces/${ASANA_WORKSPACE_ID}/projects`,
+
         /** 特定プロジェクトの詳細取得 */
         DETAIL: (projectId: string) => `${ASANA_BASE_URL}/projects/${projectId}`,
     },
@@ -24,7 +25,49 @@ export const ASANA_ENDPOINTS = {
     TASKS: {
         /** 特定プロジェクト内のタスク一覧取得 */
         LIST: (projectId: string) => `${ASANA_BASE_URL}/projects/${projectId}/tasks`,
+
         /** 特定タスクの詳細取得 */
         DETAIL: (taskId: string) => `${ASANA_BASE_URL}/tasks/${taskId}`,
     },
 };
+
+/**
+ * =====================================
+ * 🧭 GitHub API 定数
+ * =====================================
+ * 認証ユーザーのリポジトリ・ブランチ・コミット関連のエンドポイント
+ */
+
+export const GITHUB_BASE_URL = "https://api.github.com";
+
+/** 環境変数からGitHubのオーナー名を取得（必要に応じて使用） */
+export const GITHUB_OWNER = process.env.GITHUB_OWNER || "";
+
+/** GitHub APIエンドポイント */
+export const GITHUB_ENDPOINTS = {
+    /** 🔹 リポジトリ関連 */
+    REPOS: {
+        /** 認証済みユーザーのリポジトリ一覧（所有 or コラボしているもの、プライベート含む） */
+        LIST: `${GITHUB_BASE_URL}/user/repos`,
+
+        /** 特定リポジトリの詳細取得 */
+        DETAIL: (repoName: string) => `${GITHUB_BASE_URL}/repos/${GITHUB_OWNER}/${repoName}`,
+    },
+
+    /** 🔹 ブランチ関連 */
+    BRANCHES: {
+        /** 特定リポジトリのブランチ一覧取得 */
+        LIST: (repoName: string) => `${GITHUB_BASE_URL}/repos/${GITHUB_OWNER}/${repoName}/branches`,
+    },
+
+    /** 🔹 コミット関連 */
+    COMMITS: {
+        /** 特定リポジトリのコミット一覧取得 */
+        LIST: (repoName: string) => `${GITHUB_BASE_URL}/repos/${GITHUB_OWNER}/${repoName}/commits`,
+
+        /** 特定コミットの詳細取得 */
+        DETAIL: (repoName: string, sha: string) => `${GITHUB_BASE_URL}/repos/${GITHUB_OWNER}/${repoName}/commits/${sha}`,
+    },
+};
+
+
